@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Embed StackEdit — demo</title>
+  <style>
+    body { font-family: system-ui, sans-serif; margin: 24px; }
+    button { font-size: 16px; padding: 8px 16px; cursor: pointer; }
+    pre { background: #f4f4f4; padding: 12px; white-space: pre-wrap; border-radius: 6px; }
+    h3 { margin-top: 24px; }
+  </style>
+</head>
+<body>
+  <h2>Embed StackEdit demo</h2>
+  <p>Click the button to open the editor. Edits are streamed back here live.</p>
+
+  <button id="open">Open StackEdit</button>
+
+  <h3>Markdown</h3>
+  <pre id="md">(nothing yet)</pre>
+
+  <h3>Rendered HTML</h3>
+  <pre id="html">(nothing yet)</pre>
+
+  <!-- The loader (the "stackedit.js" you wanted) -->
+  <script src="stackedit.js"></script>
+  <script>
+    // Point this at WHERE YOU DEPLOYED the editor (its index.html).
+    // For local testing, use the running dev server:
+    const se = new StackEdit({ editorOrigin: 'http://localhost:8080' });
+
+    document.getElementById('open').addEventListener('click', () => {
+      se.openFile(
+        { name: 'demo.md', content: '# Hello\n\nEdit me, then watch the preview below.' },
+        (payload) => {
+          document.getElementById('md').textContent = payload.content.text;
+          document.getElementById('html').textContent = payload.content.html;
+        }
+      );
+    });
+  </script>
+</body>
+</html>
