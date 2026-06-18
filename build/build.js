@@ -1,6 +1,11 @@
 require('./check-versions')()
 
 process.env.NODE_ENV = 'production'
+// Skip eslint-loader during the production build. Linting is a dev/CI concern
+// (`npm run lint` / `npm start`); a rule crash here would inline a
+// "Module build failed" throwing stub into the bundle and break the app at
+// runtime. This gate is honoured by build/webpack.base.conf.js.
+process.env.DISABLE_LINT = '1'
 
 var ora = require('ora')
 var rm = require('rimraf')

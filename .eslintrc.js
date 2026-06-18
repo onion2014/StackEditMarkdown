@@ -42,6 +42,12 @@ module.exports = {
     'no-debugger': process.env.NODE_ENV === 'production' ? 2 : 0,
     // disable rules that crash the old eslint 4.x parser on template literals
     'template-curly-spacing': 'off',
-    'no-unexpected-multiline': 'off'
+    'no-unexpected-multiline': 'off',
+    // `indent` crashes babel-eslint on template literals too
+    // (Cannot read properties of null (reading 'range') in indent.js).
+    // Via eslint-loader that turns the offending file into a
+    // "Module build failed" throwing stub that breaks the whole bundle at
+    // runtime, so keep it off.
+    'indent': 'off'
   }
 }
