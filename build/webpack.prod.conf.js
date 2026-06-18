@@ -121,7 +121,9 @@ var webpackConfig = merge(baseWebpackConfig, {
       },
       AppCache: true,
       excludes: ['**/.*', '**/*.map', '**/index.html', '**/icons-*/*.png', '**/static/fonts/KaTeX_*'],
-      externals: ['/', '/app']
+      // Precache the app shell at the GitHub Pages subpath
+      // (https://onion2014.github.io/StackEditMarkdown/).
+      externals: ['/StackEditMarkdown/']
     }),
   ]
 })

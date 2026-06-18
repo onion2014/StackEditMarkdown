@@ -4,10 +4,15 @@ var path = require('path')
 module.exports = {
   build: {
     env: require('./prod.env'),
-    index: path.resolve(__dirname, '../dist/index.html'),
-    assetsRoot: path.resolve(__dirname, '../dist'),
+    // Deploy to GitHub Pages at https://onion2014.github.io/StackEditMarkdown/
+    // - Output goes straight to `docs/` (tracked) since `dist/` is gitignored;
+    //   GitHub Pages is configured to serve from the `/docs` folder on `main`.
+    // - `assetsPublicPath` MUST be the repo subpath so absolute references
+    //   (/static/..., /icons-..., /manifest...) resolve under the subpath.
+    index: path.resolve(__dirname, '../docs/index.html'),
+    assetsRoot: path.resolve(__dirname, '../docs'),
     assetsSubDirectory: 'static',
-    assetsPublicPath: '/',
+    assetsPublicPath: '/StackEditMarkdown/',
     productionSourceMap: true,
     // Gzip off by default as many popular static hosts such as
     // Surge or Netlify already gzip all static assets for you.
