@@ -19,10 +19,10 @@
       <span>Switch or create a local workspace.</span>
     </menu-entry>
     <hr>
-    <!-- <menu-entry @click.native="setPanel('toc')">
+    <menu-entry @click.native="setPanel('toc')">
       <icon-toc slot="icon"></icon-toc>
       Table of contents
-    </menu-entry> -->
+    </menu-entry>
     <menu-entry @click.native="setPanel('help')">
       <icon-help-circle slot="icon"></icon-help-circle>
       Markdown cheat sheet

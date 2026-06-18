@@ -44,7 +44,7 @@
         <side-bar></side-bar>
       </div>
     </div>
-    <tour v-if="!light && !layoutSettings.welcomeTourFinished"></tour>
+    <!-- <tour v-if="!light && !layoutSettings.welcomeTourFinished"></tour> -->
   </div>
 </template>
 
